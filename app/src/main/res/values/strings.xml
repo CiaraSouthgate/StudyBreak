@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">StudyBreak</string>
+    <string name="title_activity_display_timer">DisplayTimer</string>
 </resources>

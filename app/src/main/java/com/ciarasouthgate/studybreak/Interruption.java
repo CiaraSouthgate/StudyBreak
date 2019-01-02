@@ -1,6 +1,9 @@
 package com.ciarasouthgate.studybreak;
 
-public class Interruption {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Interruption implements Parcelable {
 
     /**How long the program has been running for while not paused. */
     private static long runningTime = 0;
@@ -22,8 +25,44 @@ public class Interruption {
             System.out.println("Break time @ " + taskLengthTime[i] + " milliseconds.");
             pausedTime = System.currentTimeMillis();
             //Time is currently paused
-            //On button click, resume the program here.a
+            //On button click, resume the program here.
             stoppedTime = System.currentTimeMillis() - pausedTime;
         }
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeLong(runningTime);
+        dest.writeLong(startTime);
+        dest.writeLong(pausedTime);
+        dest.writeLong(stoppedTime);
+        dest.writeIntArray(taskLengthTime);
+    }
+
+    private Interruption(Parcel in) {
+        runningTime = in.readLong();
+        startTime = in.readLong();
+        pausedTime = in.readLong();
+        stoppedTime = in.readLong();
+        taskLengthTime = in.createIntArray();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<Interruption> CREATOR
+            = new Parcelable.Creator<Interruption>() {
+
+        @Override
+        public Interruption createFromParcel(Parcel in) {
+            return new Interruption(in);
+        }
+
+        @Override
+        public Interruption[] newArray(int size) {
+            return new Interruption[size];
+        }
+    };
 }
