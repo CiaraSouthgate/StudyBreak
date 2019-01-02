@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 
 import static com.ciarasouthgate.studybreak.App.CHANNEL_1_ID;
-import static com.ciarasouthgate.studybreak.App.CHANNEL_2_ID;
 
 public class MainActivity extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
@@ -37,20 +36,6 @@ public class MainActivity extends AppCompatActivity {
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
-                .build();
-
-        notificationManager.notify(1,notification);
-    }
-
-    public void sendOnChannel2(View v) {
-        String title = editTextTitle.getText().toString();
-        String message = editTextMessage.getText().toString();
-
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-                .setSmallIcon(R.drawable.ic_alarm)
-                .setContentTitle(title)
-                .setContentText(message)
-                .setPriority(NotificationCompat.PRIORITY_LOW)
                 .build();
 
         notificationManager.notify(1,notification);
