@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         notificationManager = NotificationManagerCompat.from(this);
 
-        editTextTitle = findViewById(R.id.edit_text_title);
-        editTextMessage = findViewById(R.id.edit_text_message);
+//        editTextTitle = findViewById(R.id.edit_text_title);
+//        editTextMessage = findViewById(R.id.edit_text_message);
     }
 
     public void sendOnChannel1(View v) {
@@ -39,5 +39,17 @@ public class MainActivity extends AppCompatActivity {
                 .build();
 
         notificationManager.notify(1,notification);
+    }
+
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //TODO outState.putLong("timeLeft", INSERT NAME OF TIME VARIABLE);
+
+    }
+
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //TODO INSERT NAME OF TIME VARIABLE = savedInstanceState.getLong("timeLeft");
     }
 }
