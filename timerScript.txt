@@ -1,0 +1,23 @@
+package studybreakapp;
+import java.util.Scanner;
+
+public class Timer {
+
+    private static long studyLengthMilli = 0;
+    private static long studyLengthMin = 0;
+    private static long passedTime = 0;
+    private static long startTime = 0;
+    
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter how long you want to study for in minutes");
+        studyLengthMin = scan.nextInt();
+        studyLengthMilli = studyLengthMin * 60000;
+        startTime = System.currentTimeMillis();
+        while((passedTime) < studyLengthMilli) {
+            passedTime = System.currentTimeMillis() - startTime;
+        }
+        System.out.println("Time for break!");
+        scan.close();
+    }
+}
