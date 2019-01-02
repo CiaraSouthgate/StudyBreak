@@ -1,3 +1,14 @@
+ /**How long the program has been running for while not paused. */
+    private static long runningTime = 0;
+    /**The start time.*/
+    private static long startTime = 0;
+    /**The system time at which the program is paused.*/
+    private static long pausedTime = 0;
+    /**The length of time at which the program is paused.*/
+    private static long stoppedTime = 0;
+    /**An array holding the intevals of the breaks.*/
+    private static int [] taskLengthTime = {2000, 5000}; //time is in milliseconds
+
 public void Interuption(){
         startTime = System.currentTimeMillis();
         for (int i = 0; i < taskLengthTime.length; i++) {
