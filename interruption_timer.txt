@@ -1,0 +1,13 @@
+public void Interuption(){
+        startTime = System.currentTimeMillis();
+        for (int i = 0; i < taskLengthTime.length; i++) {
+            while (runningTime < taskLengthTime[i]) {
+                runningTime = System.currentTimeMillis() - startTime - stoppedTime;
+            }
+            System.out.println("Break time @ " + taskLengthTime[i] + " milliseconds.");
+            pausedTime = System.currentTimeMillis();
+            //Time is currently paused
+            //On button click, resume the program here.
+            stoppedTime = System.currentTimeMillis() - pausedTime;
+        }
+    }
