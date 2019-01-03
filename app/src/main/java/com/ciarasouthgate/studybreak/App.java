@@ -7,8 +7,8 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
 public class App extends Application {
-    public static final String CHANNEL_1_ID = "alert";
-    public static final String CHANNEL_2_ID = "foregroundService";
+    public static final String CHANNEL_1_ID = "startBreakAlert";
+    public static final String CHANNEL_2_ID = "endBreakAlert";
 
     public void onCreate() {
         super.onCreate();
@@ -18,23 +18,23 @@ public class App extends Application {
 
     private void createNotificationChannels() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel alertChannel = new NotificationChannel(
+            NotificationChannel channel1 = new NotificationChannel(
                     CHANNEL_1_ID,
-                    "Alert",
+                    "Break start alert",
                     NotificationManager.IMPORTANCE_HIGH
             );
-            alertChannel.setDescription("Alerts for task change");
+            channel1.setDescription("Start of break");
+
+            NotificationChannel channel2 = new NotificationChannel(
+                    CHANNEL_2_ID,
+                    "Break end alert",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel2.setDescription("End of break");
 
             NotificationManager manager = getSystemService(NotificationManager.class);
-            manager.createNotificationChannel(alertChannel);
-
-            NotificationChannel serviceChannel = new NotificationChannel(
-                    CHANNEL_2_ID,
-                    "Timer running",
-                    NotificationManager.IMPORTANCE_DEFAULT
-            );
-
-            manager.createNotificationChannel(serviceChannel);
+            manager.createNotificationChannel(channel1);
+            manager.createNotificationChannel(channel2);
         }
     }
 }

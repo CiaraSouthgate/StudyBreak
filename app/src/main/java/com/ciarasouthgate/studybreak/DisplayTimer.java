@@ -65,6 +65,7 @@ public class DisplayTimer extends AppCompatActivity {
         startService(serviceIntent);
         /* End of Service code */
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -120,6 +121,7 @@ public class DisplayTimer extends AppCompatActivity {
             }
         }
     }
+
     public void countdownStudy(long runningTime, final Interruption[] tasks) {
         new CountDownTimer(runningTime, MILLI_IN_MINUTE) {
             public void onTick(long millisUntilFinished) {
@@ -132,29 +134,29 @@ public class DisplayTimer extends AppCompatActivity {
                         timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
                     }
                     switch (task.getName()) {
-                        case ("water"):
+                        case ("Water"):
                             System.out.println("water remainder: " + remainingTime);
                             waterTime.setText(timeString);
                             break;
-                        case ("stretch"):
+                        case ("Stretch"):
                             System.out.println("stretch remainder: " + remainingTime);
                             stretchTime.setText(timeString);
                             break;
-                        case("food"):
+                        case("Food"):
                             System.out.println("food remainder: " + remainingTime);
                             foodTime.setText(timeString);
                             break;
-                        case("other"):
+                        case("Other"):
                             System.out.println("other remainder: " + remainingTime);
                             otherTime.setText(timeString);
                             break;
                         default:
                             break;
                     }
-                    if (remainingTime - MILLI_IN_MINUTE <= 10000) {
-                        System.out.println("timer up!");
+                    if (remainingTime <= MILLI_IN_MINUTE) {
+                        alert(task.getName());
+                        System.out.println(millisUntilFinished);
                         startInterruption(task, millisUntilFinished);
-//                        countdownStudy(millisUntilFinished, tasks);
                         cancel();
                     }
                 }
@@ -166,18 +168,36 @@ public class DisplayTimer extends AppCompatActivity {
         }.start();
     }
 
-    private void startInterruption(Interruption task, long leftOnTimer) {
-        System.out.println("started other method");
+    private void startInterruption(Interruption task, long timeLeft) {
         Intent intent = new Intent(DisplayTimer.this, DisplayInterruption.class);
         intent.putExtra("task", task);
+        intent.putExtra("session", session);
+        intent.putExtra("timeLeft", timeLeft);
         startActivity(intent);
     }
 
-    public void alert() {
+    public void alert(String taskName) {
+        String title = "Time to take a break!";
+        String alertMessage;
+        switch (taskName) {
+            case ("Water"):
+                alertMessage = "Have a drink of water.";
+                break;
+            case ("Stretch"):
+                alertMessage = "Get up and have a stretch.";
+                break;
+            case ("Food"):
+                alertMessage = "Have something to eat.";
+                break;
+            default:
+                alertMessage = "Take a few minutes to relax.";
+                break;
+        }
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_alarm)
-//                .setContentTitle(title)
-//                .setContentText(message)
+                .setContentTitle(title)
+                .setContentText(alertMessage)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .build();

@@ -9,19 +9,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+import java.util.concurrent.TimeUnit;
+
 import static com.ciarasouthgate.studybreak.App.CHANNEL_1_ID;
+import static com.ciarasouthgate.studybreak.App.CHANNEL_2_ID;
 
 public class DisplayInterruption extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
     private static final int MILLI_IN_MINUTE = 60000;
     private static final int MILLI_IN_SECOND = 1000;
 
+    DecimalFormat f = new DecimalFormat("00");
+
     private TextView displayTime;
     private TextView breakText;
 
     private Interruption task;
     private StudySession session;
-    private long timeLeft;
+    public long timeLeft;
 
     private String timeString;
     private long min;
@@ -31,6 +37,7 @@ public class DisplayInterruption extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_interruption);
+        notificationManager = NotificationManagerCompat.from(this);
 
         task = getIntent().getParcelableExtra("task");
         session = getIntent().getParcelableExtra("session");
@@ -52,14 +59,15 @@ public class DisplayInterruption extends AppCompatActivity {
                 long secondsLeft = millisUntilFinished / MILLI_IN_SECOND;
                 min = secondsLeft / 60;
                 sec = secondsLeft % 60;
-                timeString = Long.toString(min) + ":" + Long.toString(sec);
+                String minString = f.format(min);
+                String secString = f.format(sec);
+                timeString = minString + ":" + secString;
                 displayTime.setText(timeString);
             }
 
             public void onFinish() {
-                //TODO find out why notification isn't working
                 alert();
-                //TODO format string properly when below 10s
+
                 goBack();
             }
         }.start();
@@ -84,6 +92,6 @@ public class DisplayInterruption extends AppCompatActivity {
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .build();
 
-        notificationManager.notify(1,notification);
+        notificationManager.notify(1, notification);
     }
 }
