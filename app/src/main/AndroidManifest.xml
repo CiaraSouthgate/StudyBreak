@@ -20,7 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayTimer"></activity>
-        <service android:name=".RunInBackground"/>
 
         <meta-data
             android:name="preloaded_fonts"

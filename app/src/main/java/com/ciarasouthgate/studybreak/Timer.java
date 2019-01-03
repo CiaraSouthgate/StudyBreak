@@ -1,5 +1,6 @@
 package com.ciarasouthgate.studybreak;
 
+import android.os.CountDownTimer;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -8,17 +9,41 @@ public class Timer implements Parcelable {
     private static long startTime = 0;
     private static int minuteCount = 0;
     private static final int MILLI_TO_MINUTES = 60000;
+    private static final int MILLI_IN_SECOND = 1000;
 
-    public static void countdown() {
-        startTime = System.currentTimeMillis();
-        while (true) {
-            runningTime = System.currentTimeMillis() - startTime;
-            if (runningTime / MILLI_TO_MINUTES > minuteCount) {
-                minuteCount++;
-                System.out.println("Number of minutes elapsed: " + minuteCount);
+    public static void countdownStudy(long runningTime, final Interruption[] tasks) {
+        new CountDownTimer(runningTime, MILLI_TO_MINUTES) {
+            public void onTick(long millisUntilFinished) {
+                for (Interruption task : tasks) {
+                    //TODO update displayed timer
+                    if (millisUntilFinished % task.getDuration() == 0) {
+                        long current = millisUntilFinished;
+                        //TODO run interruption activity
+                        countdownStudy(current, tasks);
+                        cancel();
+                    }
+                }
             }
-        }
-    } //ToDo -countdown or countup
+
+            public void onFinish() {
+               //TODO whatever happens when you're done studying
+            }
+        }.start();
+
+    }
+
+    public static void countdownInterruption(long runningTime, Interruption task) {
+        new CountDownTimer(runningTime, MILLI_IN_SECOND) {
+            public void onTick(long millisUntilFinished) {
+                //TODO update displayed timer
+            }
+
+            public void onFinish() {
+                //TODO make notification
+                return;
+            }
+        }.start();
+    }
 
 
     @Override
