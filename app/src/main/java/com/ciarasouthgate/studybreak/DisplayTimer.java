@@ -2,16 +2,12 @@ package com.ciarasouthgate.studybreak;
 
 import android.app.Notification;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import static com.ciarasouthgate.studybreak.App.CHANNEL_1_ID;
 
@@ -43,6 +39,8 @@ public class DisplayTimer extends AppCompatActivity {
         startTime = getIntent().getLongExtra("startTime", SIX_HOURS);
         notificationManager = NotificationManagerCompat.from(this);
 
+        System.out.println(startTime);
+
         countdownStudy(startTime, session.getInterruptions());
 
         /* These next few lines are for the Service, if we get it running. */
@@ -58,12 +56,7 @@ public class DisplayTimer extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 for (Interruption task : tasks) {
                     long remainingTime = millisUntilFinished % task.getInterval();
-                    String timeString;
-                    if (remainingTime < MILLI_IN_MINUTE) {
-                        timeString = "<1 ";
-                    } else {
-                        timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
-                    }
+                    String timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
                     switch (task.getName()) {
                         case ("Water"):
                             System.out.println("water remainder: " + remainingTime);
@@ -84,9 +77,9 @@ public class DisplayTimer extends AppCompatActivity {
                         default:
                             break;
                     }
-                    if (remainingTime - MILLI_IN_MINUTE <= 10000) {
-                        System.out.println("timer up!");
+                    if (remainingTime <= MILLI_IN_MINUTE) {
                         alert(task.getName());
+                        System.out.println(millisUntilFinished);
                         startInterruption(task, millisUntilFinished);
                         cancel();
                     }
