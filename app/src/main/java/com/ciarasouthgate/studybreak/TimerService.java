@@ -74,14 +74,6 @@ public class TimerService extends Service {
         return super.onStartCommand(intent, flags, startId);
     }
 
-//    @Override
-//    public int onStartCommand(Intent intent, int flags, int startId) {
-//        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-//                //TODO replace with string
-//                .setContentTitle("GET TASK NAME")
-//                .setContentText("GET TIMER")
-//    }
-
     @Override
     public void onDestroy() {
         countdowntimer.cancel();
