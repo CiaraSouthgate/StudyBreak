@@ -15,10 +15,14 @@ public class DisplayTimer extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
     private Intent serviceIntent;
 
+    StudySession session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_timer);
+
+        session = getIntent().getParcelableExtra("session");
 
         notificationManager = NotificationManagerCompat.from(this);
         Intent serviceIntent = new Intent(this, TimerService.class);
@@ -27,6 +31,10 @@ public class DisplayTimer extends AppCompatActivity {
         serviceIntent.putExtra("timer", timer);
 
         startService(serviceIntent);
+    }
+
+    public void goodbye() {
+        Intent intent = new Intent(this, Goodbye.class);
     }
 
     public void notify(View v) {

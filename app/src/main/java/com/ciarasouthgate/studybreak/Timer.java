@@ -1,5 +1,6 @@
 package com.ciarasouthgate.studybreak;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -26,7 +27,7 @@ public class Timer implements Parcelable {
             }
 
             public void onFinish() {
-               //TODO whatever happens when you're done studying
+
             }
         }.start();
 

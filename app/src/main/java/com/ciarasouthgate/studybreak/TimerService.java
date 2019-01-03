@@ -20,7 +20,7 @@ public class TimerService extends Service {
 //        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
 //                //TODO replace with string
 //                .setContentTitle("GET TASK NAME")
-//                .setContentText("GET TIMER");
+//                .setContentText("GET TIMER")
 //    }
 
     @Override
