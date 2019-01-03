@@ -5,23 +5,19 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import android.media.RingtoneManager;
+import android.net.Uri;
 
 import static com.ciarasouthgate.studybreak.App.CHANNEL_1_ID;
 
 public class DisplayTimer extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
-    private Intent serviceIntent;
     private static final int MILLI_IN_MINUTE = 60000;
     private static final int MILLI_IN_SECOND = 1000;
     private static final int SIX_HOURS = 6 * 60 * 60000;
@@ -110,63 +106,65 @@ public class DisplayTimer extends AppCompatActivity {
         System.out.println(timeRemaining);
 
         long timeLong = Long.parseLong(timeRemaining.trim());
-        if (timeLong * MILLI_IN_MINUTE <= 10000) {
+        if (timeLong == 0) {
 
             Interruption[] interruptions = session.getInterruptions();
 
             for (Interruption interruption : interruptions) {
-                if (interruption.getName().equals(taskname)) {
+                System.out.println("FOUND TASK: " + interruption.getName());
+                if (interruption.getName().toLowerCase().equals(taskname.toLowerCase())) {
+                    alert(interruption.getName());
                     startInterruption(interruption, timeLong);
                 }
             }
         }
     }
 
-    public void countdownStudy(long runningTime, final Interruption[] tasks) {
-        new CountDownTimer(runningTime, MILLI_IN_MINUTE) {
-            public void onTick(long millisUntilFinished) {
-                for (Interruption task : tasks) {
-                    long remainingTime = millisUntilFinished % task.getInterval();
-                    String timeString;
-                    if (remainingTime < MILLI_IN_MINUTE) {
-                        timeString = "<1 ";
-                    } else {
-                        timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
-                    }
-                    switch (task.getName()) {
-                        case ("Water"):
-                            System.out.println("water remainder: " + remainingTime);
-                            waterTime.setText(timeString);
-                            break;
-                        case ("Stretch"):
-                            System.out.println("stretch remainder: " + remainingTime);
-                            stretchTime.setText(timeString);
-                            break;
-                        case("Food"):
-                            System.out.println("food remainder: " + remainingTime);
-                            foodTime.setText(timeString);
-                            break;
-                        case("Other"):
-                            System.out.println("other remainder: " + remainingTime);
-                            otherTime.setText(timeString);
-                            break;
-                        default:
-                            break;
-                    }
-                    if (remainingTime <= MILLI_IN_MINUTE) {
-                        alert(task.getName());
-                        System.out.println(millisUntilFinished);
-                        startInterruption(task, millisUntilFinished);
-                        cancel();
-                    }
-                }
-            }
-
-            public void onFinish() {
-                startActivity(new Intent(DisplayTimer.this, Goodbye.class));
-            }
-        }.start();
-    }
+//    public void countdownStudy(long runningTime, final Interruption[] tasks) {
+//        new CountDownTimer(runningTime, MILLI_IN_MINUTE) {
+//            public void onTick(long millisUntilFinished) {
+//                for (Interruption task : tasks) {
+//                    long remainingTime = millisUntilFinished % task.getInterval();
+//                    String timeString;
+//                    if (remainingTime < MILLI_IN_MINUTE) {
+//                        timeString = "<1 ";
+//                    } else {
+//                        timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
+//                    }
+//                    switch (task.getName()) {
+//                        case ("Water"):
+//                            System.out.println("water remainder: " + remainingTime);
+//                            waterTime.setText(timeString);
+//                            break;
+//                        case ("Stretch"):
+//                            System.out.println("stretch remainder: " + remainingTime);
+//                            stretchTime.setText(timeString);
+//                            break;
+//                        case("Food"):
+//                            System.out.println("food remainder: " + remainingTime);
+//                            foodTime.setText(timeString);
+//                            break;
+//                        case("Other"):
+//                            System.out.println("other remainder: " + remainingTime);
+//                            otherTime.setText(timeString);
+//                            break;
+//                        default:
+//                            break;
+//                    }
+//                    if (remainingTime <= MILLI_IN_MINUTE) {
+//                        alert(task.getName());
+//                        System.out.println(millisUntilFinished);
+//                        startInterruption(task, millisUntilFinished);
+//                        cancel();
+//                    }
+//                }
+//            }
+//
+//            public void onFinish() {
+//                startActivity(new Intent(DisplayTimer.this, Goodbye.class));
+//            }
+//        }.start();
+//    }
 
     private void startInterruption(Interruption task, long timeLeft) {
         Intent intent = new Intent(DisplayTimer.this, DisplayInterruption.class);
@@ -194,12 +192,15 @@ public class DisplayTimer extends AppCompatActivity {
                 break;
         }
 
+        Uri uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_alarm)
                 .setContentTitle(title)
                 .setContentText(alertMessage)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
+                .setSound(uri)
                 .build();
 
         notificationManager.notify(1,notification);
