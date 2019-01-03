@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/title3"
-        android:layout_width="390dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/colorPrimary"
         android:fontFamily="@font/caveat_bold"
@@ -69,10 +69,10 @@
         android:id="@+id/stretchIcon"
         android:layout_width="94dp"
         android:layout_height="115dp"
-        app:layout_constraintBottom_toBottomOf="@id/stretchBar"
-        app:layout_constraintLeft_toLeftOf="@id/stretchBar"
-        app:layout_constraintRight_toRightOf="@id/stretchBar"
-        app:layout_constraintTop_toTopOf="@id/stretchBar"
+        app:layout_constraintBottom_toBottomOf="@+id/stretchBar"
+        app:layout_constraintLeft_toLeftOf="@+id/stretchBar"
+        app:layout_constraintRight_toRightOf="@+id/stretchBar"
+        app:layout_constraintTop_toTopOf="@+id/stretchBar"
         app:srcCompat="@drawable/stretchicon" />
 
     <TextView
@@ -138,10 +138,10 @@
         android:id="@+id/otherIcon"
         android:layout_width="97dp"
         android:layout_height="325dp"
-        app:layout_constraintBottom_toBottomOf="@id/otherBar"
-        app:layout_constraintLeft_toLeftOf="@id/otherBar"
-        app:layout_constraintRight_toRightOf="@id/otherBar"
-        app:layout_constraintTop_toTopOf="@id/otherBar"
+        app:layout_constraintBottom_toBottomOf="@+id/otherBar"
+        app:layout_constraintLeft_toLeftOf="@+id/otherBar"
+        app:layout_constraintRight_toRightOf="@+id/otherBar"
+        app:layout_constraintTop_toTopOf="@+id/otherBar"
         app:srcCompat="@drawable/pauseicon" />
 
     <TextView
@@ -207,10 +207,10 @@
         android:id="@+id/foodIcon"
         android:layout_width="75dp"
         android:layout_height="321dp"
-        app:layout_constraintBottom_toBottomOf="@id/foodBar"
-        app:layout_constraintLeft_toLeftOf="@id/foodBar"
-        app:layout_constraintRight_toRightOf="@id/foodBar"
-        app:layout_constraintTop_toTopOf="@id/foodBar"
+        app:layout_constraintBottom_toBottomOf="@+id/foodBar"
+        app:layout_constraintLeft_toLeftOf="@+id/foodBar"
+        app:layout_constraintRight_toRightOf="@+id/foodBar"
+        app:layout_constraintTop_toTopOf="@+id/foodBar"
         app:srcCompat="@drawable/foodicon2" />
 
     <TextView
@@ -261,10 +261,10 @@
         android:id="@+id/waterIcon"
         android:layout_width="68dp"
         android:layout_height="221dp"
-        app:layout_constraintBottom_toBottomOf="@id/waterBar"
-        app:layout_constraintLeft_toLeftOf="@id/waterBar"
-        app:layout_constraintRight_toRightOf="@id/waterBar"
-        app:layout_constraintTop_toTopOf="@id/waterBar"
+        app:layout_constraintBottom_toBottomOf="@+id/waterBar"
+        app:layout_constraintLeft_toLeftOf="@+id/waterBar"
+        app:layout_constraintRight_toRightOf="@+id/waterBar"
+        app:layout_constraintTop_toTopOf="@+id/waterBar"
         app:srcCompat="@drawable/watericon" />
 
     <TextView
@@ -307,24 +307,24 @@
         android:background="#07af57"
         android:text="Add Break"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/pauseButton"
         android:layout_width="117dp"
         android:layout_height="51dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:background="#d3940c"
         android:text="Pause"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/endButton"
         app:layout_constraintStart_toEndOf="@+id/addButton" />
 
     <Button
         android:id="@+id/endButton"
         android:layout_width="117dp"
         android:layout_height="51dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="#c10726"
