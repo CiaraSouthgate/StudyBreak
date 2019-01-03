@@ -7,6 +7,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -49,6 +51,10 @@ public class DisplayInterruption extends AppCompatActivity {
         breakText.setText(task.getName() + " Break");
 
         countdownInterruption(task.getDuration(), task);
+
+        Button endButton = findViewById(R.id.endBreakButton);
+        endButton.setVisibility(View.GONE);
+
     }
 
     public void countdownInterruption(long runningTime, Interruption task) {
@@ -74,6 +80,13 @@ public class DisplayInterruption extends AppCompatActivity {
     }
 
     public void goBack() {
+        Intent intent = new Intent(DisplayInterruption.this, DisplayTimer.class);
+        intent.putExtra("session", session);
+        intent.putExtra("startTime", timeLeft);
+        startActivity(intent);
+    }
+
+    public void goBackButton(View view) {
         Intent intent = new Intent(DisplayInterruption.this, DisplayTimer.class);
         intent.putExtra("session", session);
         intent.putExtra("startTime", timeLeft);

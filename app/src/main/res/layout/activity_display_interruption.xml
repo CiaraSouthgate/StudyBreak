@@ -13,6 +13,7 @@
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="36dp"
         android:background="#c10726"
+        android:onClick="goBackButton"
         android:text="End Break"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -31,25 +31,20 @@ public class TimerService extends Service {
                 for (Interruption task : tasks) {
                     long remainingTime = millisUntilFinished % task.getInterval();
                     String timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
-                    System.out.println(task.getName());
                     switch (task.getName()) {
                         case ("Water"):
-                            System.out.println("water remainder: " + remainingTime);
                             bi.putExtra("time", timeString);
                             bi.putExtra("name", "water");
                             break;
                         case ("Stretch"):
-                            System.out.println("stretch remainder: " + remainingTime);
                             bi.putExtra("time", timeString);
                             bi.putExtra("name", "stretch");
                             break;
                         case("Food"):
-                            System.out.println("food remainder: " + remainingTime);
                             bi.putExtra("time", timeString);
                             bi.putExtra("name", "food");
                             break;
                         case("Other"):
-                            System.out.println("other remainder: " + remainingTime);
                             bi.putExtra("time", timeString);
                             bi.putExtra("name", "other");
                             break;
@@ -57,7 +52,6 @@ public class TimerService extends Service {
                             break;
                     }
                     sendBroadcast(bi);
-                    System.out.println("send");
                 }
             }
             @Override
