@@ -1,28 +1,89 @@
 package com.ciarasouthgate.studybreak;
 
+import android.app.Notification;
+import android.content.Intent;
 import android.os.CountDownTimer;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import static com.ciarasouthgate.studybreak.App.CHANNEL_1_ID;
 
 public class DisplayInterruption extends AppCompatActivity {
+    private NotificationManagerCompat notificationManager;
     private static final int MILLI_IN_MINUTE = 60000;
     private static final int MILLI_IN_SECOND = 1000;
+
+    private TextView displayTime;
+    private TextView breakText;
+
+    private Interruption task;
+    private StudySession session;
+    private long timeLeft;
+
+    private String timeString;
+    private long min;
+    private long sec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_interruption);
+
+        task = getIntent().getParcelableExtra("task");
+        session = getIntent().getParcelableExtra("session");
+        timeLeft = getIntent().getLongExtra("timeLeft", 21600000);
+
+        displayTime = findViewById(R.id.interruptionTime);
+        breakText = findViewById(R.id.breakText);
+
+        breakText.setText(task.getName() + " Break");
+
+        countdownInterruption(task.getDuration(), task);
     }
 
-    public static void countdownInterruption(long runningTime, Interruption task) {
+    public void countdownInterruption(long runningTime, Interruption task) {
+        final String taskName = task.getName();
+
         new CountDownTimer(runningTime, MILLI_IN_SECOND) {
             public void onTick(long millisUntilFinished) {
-                //TODO update displayed timer
+                long secondsLeft = millisUntilFinished / MILLI_IN_SECOND;
+                min = secondsLeft / 60;
+                sec = secondsLeft % 60;
+                timeString = Long.toString(min) + ":" + Long.toString(sec);
+                displayTime.setText(timeString);
             }
 
             public void onFinish() {
-                //TODO make notification
+                //TODO find out why notification isn't working
+                alert();
+                //TODO format string properly when below 10s
+                goBack();
             }
         }.start();
+    }
+
+    public void goBack() {
+        Intent intent = new Intent(DisplayInterruption.this, DisplayTimer.class);
+        intent.putExtra("session", session);
+        intent.putExtra("startTime", timeLeft);
+        startActivity(intent);
+    }
+
+    public void alert() {
+        String title = "Break is over!";
+        String alertMessage = "Time to get back to studying.";
+
+        Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
+                .setSmallIcon(R.drawable.ic_alarm)
+                .setContentTitle(title)
+                .setContentText(alertMessage)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_ALARM)
+                .build();
+
+        notificationManager.notify(1,notification);
     }
 }

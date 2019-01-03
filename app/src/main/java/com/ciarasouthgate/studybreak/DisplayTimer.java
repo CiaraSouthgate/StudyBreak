@@ -19,7 +19,6 @@ public class DisplayTimer extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
     private Intent serviceIntent;
     private static final int MILLI_IN_MINUTE = 60000;
-    private static final int MILLI_IN_SECOND = 1000;
     private static final int SIX_HOURS = 6 * 60 * 60000;
     private long startTime;
 
@@ -40,16 +39,11 @@ public class DisplayTimer extends AppCompatActivity {
         foodTime = findViewById(R.id.foodTime);
         otherTime = findViewById(R.id.otherTime);
 
-//        waterTime.setText("test");
-//        stretchTime.setText("test");
-//        foodTime.setText("test");
-//        otherTime.setText("test");
-
         session = getIntent().getParcelableExtra("session");
         startTime = getIntent().getLongExtra("startTime", SIX_HOURS);
         notificationManager = NotificationManagerCompat.from(this);
 
-        countdownStudy(SIX_HOURS, session.getInterruptions());
+        countdownStudy(startTime, session.getInterruptions());
 
         /* These next few lines are for the Service, if we get it running. */
         Intent serviceIntent = new Intent(this, TimerService.class);
@@ -71,19 +65,19 @@ public class DisplayTimer extends AppCompatActivity {
                         timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
                     }
                     switch (task.getName()) {
-                        case ("water"):
+                        case ("Water"):
                             System.out.println("water remainder: " + remainingTime);
                             waterTime.setText(timeString);
                             break;
-                        case ("stretch"):
+                        case ("Stretch"):
                             System.out.println("stretch remainder: " + remainingTime);
                             stretchTime.setText(timeString);
                             break;
-                        case("food"):
+                        case("Food"):
                             System.out.println("food remainder: " + remainingTime);
                             foodTime.setText(timeString);
                             break;
-                        case("other"):
+                        case("Other"):
                             System.out.println("other remainder: " + remainingTime);
                             otherTime.setText(timeString);
                             break;
@@ -92,8 +86,8 @@ public class DisplayTimer extends AppCompatActivity {
                     }
                     if (remainingTime - MILLI_IN_MINUTE <= 10000) {
                         System.out.println("timer up!");
+                        alert(task.getName());
                         startInterruption(task, millisUntilFinished);
-//                        countdownStudy(millisUntilFinished, tasks);
                         cancel();
                     }
                 }
@@ -105,18 +99,36 @@ public class DisplayTimer extends AppCompatActivity {
         }.start();
     }
 
-    private void startInterruption(Interruption task, long leftOnTimer) {
-        System.out.println("started other method");
+    private void startInterruption(Interruption task, long timeLeft) {
         Intent intent = new Intent(DisplayTimer.this, DisplayInterruption.class);
         intent.putExtra("task", task);
+        intent.putExtra("session", session);
+        intent.putExtra("timeLeft", timeLeft);
         startActivity(intent);
     }
 
-    public void alert() {
+    public void alert(String taskName) {
+        String title = "Time to take a break!";
+        String alertMessage;
+        switch (taskName) {
+            case ("Water"):
+                alertMessage = "Have a drink of water.";
+                break;
+            case ("Stretch"):
+                alertMessage = "Get up and have a stretch.";
+                break;
+            case ("Food"):
+                alertMessage = "Have something to eat.";
+                break;
+            default:
+                alertMessage = "Take a few minutes to relax.";
+                break;
+        }
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_1_ID)
                 .setSmallIcon(R.drawable.ic_alarm)
-//                .setContentTitle(title)
-//                .setContentText(message)
+                .setContentTitle(title)
+                .setContentText(alertMessage)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_ALARM)
                 .build();
