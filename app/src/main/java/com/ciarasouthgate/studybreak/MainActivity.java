@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -11,26 +12,18 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        configureStartButton();
     }
 
-    public void onAddButton(View view) {
-//        PopupMenu popup = new PopupMenu(this, view);
-//        MenuInflater inflater = popup.getMenuInflater();
-//        inflater.inflate(R.menu.menu_example, popup.getMenu());
-//        popup.show();
-//        if (this.menuState) {
-//            this.menuState = false;
-//
-//
-//        } else {
-//            this.menuState = true;
-//
-//        }
-    }
-
-    public void onStartTimer(View view) {
-        // do something
+    public void configureStartButton() {
+        // Adds onclick listener to start_button
+        // Changes activity to DisplayTimer
+        Button startButton = findViewById(R.id.start_button);
+        startButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, DisplayTimer.class));
+            }
+        });
     }
 }
