@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int MILLI_IN_MINUTE = 60000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +33,15 @@ public class MainActivity extends AppCompatActivity {
                 EditText foodTime = findViewById(R.id.food_time);
                 EditText otherTime = findViewById(R.id.other_time);
 
-                long waterLong = Long.parseLong(waterTime.getText().toString());
-                long stretchLong = Long.parseLong(stretchTime.getText().toString());
-                long foodLong = Long.parseLong(foodTime.getText().toString());
-                long otherLong = Long.parseLong(otherTime.getText().toString());
+                long waterLong = Long.parseLong(waterTime.getText().toString()) * MILLI_IN_MINUTE;
+                long stretchLong = Long.parseLong(stretchTime.getText().toString()) * MILLI_IN_MINUTE;
+                long foodLong = Long.parseLong(foodTime.getText().toString()) * MILLI_IN_MINUTE;
+                long otherLong = Long.parseLong(otherTime.getText().toString()) * MILLI_IN_MINUTE;
 
                 Interruption water = new Interruption("water", waterLong, 0);
-                Interruption stretch = new Interruption("stretch", stretchLong, 10);
-                Interruption food = new Interruption("food", foodLong, 20);
-                Interruption other = new Interruption("other", otherLong, 30);
+                Interruption stretch = new Interruption("stretch", stretchLong, 10 * MILLI_IN_MINUTE);
+                Interruption food = new Interruption("food", foodLong, 20 * MILLI_IN_MINUTE);
+                Interruption other = new Interruption("other", otherLong, 30 * MILLI_IN_MINUTE);
 
                 Interruption[] i = new Interruption[]{water, stretch, food, other};
 

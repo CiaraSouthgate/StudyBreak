@@ -4,11 +4,11 @@ import android.os.Parcelable;
 
 public class Interruption implements Parcelable {
     /** The name of interruption. */
-    private static String name;
+    private String name;
     /** The interval between interruptions. */
-    private static long interval;
+    private long interval;
     /** The duration of interruption. */
-    private static long duration;
+    private long duration;
 
     public Interruption(String name, long interval, long duration) {
         this.name = name;
@@ -16,15 +16,15 @@ public class Interruption implements Parcelable {
         this.duration = duration;
     }
 
-    public static String getName() {
+    public String getName() {
         return name;
     }
 
-    public static long getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public static long getInterval() {
+    public long getInterval() {
         return interval;
     }
 

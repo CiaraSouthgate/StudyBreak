@@ -19,13 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DisplayTimer" />
+        <activity android:name=".DisplayTimer" android:theme="@style/Theme.AppCompat.Light.NoActionBar" android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".Goodbye"></activity>
+        <activity android:name=".Goodbye" />
     </application>
 
 </manifest>
