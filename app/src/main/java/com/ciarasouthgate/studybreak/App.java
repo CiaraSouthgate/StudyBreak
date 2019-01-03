@@ -20,10 +20,10 @@ public class App extends Application {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel1 = new NotificationChannel(
                     CHANNEL_1_ID,
-                    "Break start alert",
+                    "Break start/end alert",
                     NotificationManager.IMPORTANCE_HIGH
             );
-            channel1.setDescription("Start of break");
+            channel1.setDescription("Start/end of break");
 
             NotificationChannel channel2 = new NotificationChannel(
                     CHANNEL_2_ID,
