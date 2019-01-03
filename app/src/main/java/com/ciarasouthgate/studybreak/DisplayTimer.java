@@ -53,7 +53,7 @@ public class DisplayTimer extends AppCompatActivity {
         Intent serviceIntent = new Intent(this, TimerService.class);
         //TODO replace with timer variable
         int timer = 0;
-        serviceIntent.putExtra("timer", timer);
+        serviceIntent.putExtra("session", this.session);
 
         startService(serviceIntent);
         /* End of Service code */

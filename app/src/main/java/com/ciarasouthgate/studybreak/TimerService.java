@@ -3,16 +3,48 @@ package com.ciarasouthgate.studybreak;
 import android.app.Notification;
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
+import android.os.CountDownTimer;
 
 import static com.ciarasouthgate.studybreak.App.CHANNEL_2_ID;
 
 public class TimerService extends Service {
+    private static final int SIX_HOURS = 6 * 60 * 60000;
+    CountDownTimer countdowntimer;
+    private StudySession session;
+
     @Override
     public void onCreate() {
+
         super.onCreate();
+        countdowntimer = new CountDownTimer(SIX_HOURS, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+            @Override
+            public void onFinish() {
+
+            }
+        };
+        countdowntimer.start();
+    }
+
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        super.onStartCommand(intent, flags, startId);
+        Bundle extras = intent.getExtras();
+
+        if (!(extras == null)) {
+
+            this.session = extras.get("session");
+
+        }
+        return super.onStartCommand(intent, flags, startId);
     }
 
 //    @Override
@@ -25,6 +57,7 @@ public class TimerService extends Service {
 
     @Override
     public void onDestroy() {
+        countdowntimer.cancel();
         super.onDestroy();
     }
 
