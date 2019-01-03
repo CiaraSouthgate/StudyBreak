@@ -1,7 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
 
+    <Button
+        android:id="@+id/addButton2"
+        android:layout_width="173dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="36dp"
+        android:background="#c10726"
+        android:text="End Break"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/interruptionBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="266dp"
+        android:layout_height="254dp"
+        android:layout_marginTop="8dp"
+        android:progress="100"
+        android:progressDrawable="@drawable/circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/breakText" />
+
+    <TextView
+        android:id="@+id/breakText"
+        android:layout_width="229dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="_______ Break"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title2" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="0dp"
+        android:layout_height="71dp"
+        android:background="@color/colorPrimary"
+        android:fontFamily="@font/caveat_bold"
+        android:gravity="center"
+        android:paddingStart="10sp"
+        android:paddingEnd="10sp"
+        android:text="@string/app_name"
+        android:textColor="@color/colorAccent"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/interruptionMin"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="00"
+        android:textAlignment="textStart"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/interruptionBar"
+        app:layout_constraintEnd_toEndOf="@+id/interruptionBar"
+        app:layout_constraintStart_toStartOf="@+id/interruptionBar"
+        app:layout_constraintTop_toTopOf="@+id/interruptionBar" />
+
+    <TextView
+        android:id="@+id/interruptionMin2"
+        android:layout_width="65dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="48dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="@string/minutes"
+        android:textAlignment="textStart"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintBottom_toBottomOf="@+id/interruptionBar"
+        app:layout_constraintEnd_toEndOf="@+id/interruptionBar"
+        app:layout_constraintHorizontal_bias="0.855"
+        app:layout_constraintStart_toStartOf="@+id/interruptionBar"
+        app:layout_constraintTop_toTopOf="@+id/interruptionBar" />
 </android.support.constraint.ConstraintLayout>
