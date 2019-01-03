@@ -8,9 +8,10 @@
 
 
     <Button
-        android:id="@+id/addButton2"
+        android:id="@+id/endBreakButton"
         android:layout_width="173dp"
         android:layout_height="68dp"
+        android:layout_marginEnd="4dp"
         android:layout_marginBottom="36dp"
         android:background="#c10726"
         android:text="End Break"
@@ -65,7 +66,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/interruptionMin"
+        android:id="@+id/interruptionTime"
         android:layout_width="52dp"
         android:layout_height="48dp"
         android:layout_marginEnd="48dp"
@@ -81,7 +82,7 @@
         app:layout_constraintTop_toTopOf="@+id/interruptionBar" />
 
     <TextView
-        android:id="@+id/interruptionMin2"
+        android:id="@+id/interruptionMin"
         android:layout_width="65dp"
         android:layout_height="48dp"
         android:layout_marginEnd="48dp"
