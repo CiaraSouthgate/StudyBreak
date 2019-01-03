@@ -1,5 +1,4 @@
 package com.ciarasouthgate.studybreak;
-
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -15,7 +14,18 @@ public class Interruption implements Parcelable {
     private static long stoppedTime = 0;
     /**An array holding the intevals of the breaks.*/
     private static int [] taskLengthTime = {2000, 5000}; //time is in milliseconds
+    /** The name of interruption*/
+    private static String name;
+    /** The interval of interruption*/
+    private static long interval;
+    /** The duration of interruption*/
+    private static long duration;
 
+    public Interruption(String name, long interval, long duration) {
+        this.name = name;
+        this.interval = interval;
+        this.duration = duration;
+    }
     public static void main(String[] args) {
         startTime = System.currentTimeMillis();
         for (int i = 0; i < taskLengthTime.length; i++) {
