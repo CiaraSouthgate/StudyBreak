@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 long foodLong = Long.parseLong(foodTime.getText().toString()) * MILLI_IN_MINUTE;
                 long otherLong = Long.parseLong(otherTime.getText().toString()) * MILLI_IN_MINUTE;
 
-                Interruption water = new Interruption("water", waterLong, 0);
+                Interruption water = new Interruption("water", waterLong, 1 * MILLI_IN_MINUTE);
                 Interruption stretch = new Interruption("stretch", stretchLong, 10 * MILLI_IN_MINUTE);
                 Interruption food = new Interruption("food", foodLong, 20 * MILLI_IN_MINUTE);
                 Interruption other = new Interruption("other", otherLong, 30 * MILLI_IN_MINUTE);

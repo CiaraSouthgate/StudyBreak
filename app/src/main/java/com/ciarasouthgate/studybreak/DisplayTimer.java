@@ -60,35 +60,39 @@ public class DisplayTimer extends AppCompatActivity {
     }
 
     public void countdownStudy(long runningTime, final Interruption[] tasks) {
-
-
-
         new CountDownTimer(runningTime, MILLI_IN_MINUTE) {
             public void onTick(long millisUntilFinished) {
                 for (Interruption task : tasks) {
                     long remainingTime = millisUntilFinished % task.getInterval();
-                    remainingTime /= MILLI_IN_MINUTE;
-                    String timeString = Long.toString(remainingTime) + " ";
+                    String timeString;
+                    if (remainingTime < MILLI_IN_MINUTE) {
+                        timeString = "<1 ";
+                    } else {
+                        timeString = Long.toString(remainingTime / MILLI_IN_MINUTE) + " ";
+                    }
                     switch (task.getName()) {
                         case ("water"):
+                            System.out.println("water remainder: " + remainingTime);
                             waterTime.setText(timeString);
                             break;
                         case ("stretch"):
+                            System.out.println("water remainder: " + remainingTime);
                             stretchTime.setText(timeString);
                             break;
                         case("food"):
+                            System.out.println("water remainder: " + remainingTime);
                             foodTime.setText(timeString);
                             break;
                         case("other"):
+                            System.out.println("water remainder: " + remainingTime);
                             otherTime.setText(timeString);
                             break;
                         default:
                             break;
                     }
-                    if (remainingTime == 0) {
-                        Intent intent = new Intent(DisplayTimer.this, Interruption.class);
-                        intent.putExtra("task", task);
-                        startActivity(intent);
+                    if (remainingTime <= 30000) {
+                        System.out.println("timer up!");
+                        startInterruption(task);
                         countdownStudy(millisUntilFinished, tasks);
                         cancel();
                     }
@@ -99,6 +103,12 @@ public class DisplayTimer extends AppCompatActivity {
                 startActivity(new Intent(DisplayTimer.this, Goodbye.class));
             }
         }.start();
+    }
+
+    private void startInterruption(Interruption task) {
+        Intent intent = new Intent(DisplayTimer.this, DisplayInterruption.class);
+        intent.putExtra("task", task);
+        startActivity(intent);
     }
 
     public void alert() {
