@@ -2,6 +2,7 @@ package com.ciarasouthgate.studybreak;
 
 import android.app.Notification;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -20,8 +21,12 @@ public class DisplayTimer extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         notificationManager = NotificationManagerCompat.from(this);
+        Intent serviceIntent = new Intent(this, TimerService.class);
+        //TODO replace with timer variable
+        int timer = 0;
+        serviceIntent.putExtra("timer", timer);
 
-        serviceIntent = new Intent(getApplicationContext(), RunInBackground.class);
+        startService(serviceIntent);
     }
 
     public void notify(View v) {
@@ -39,13 +44,30 @@ public class DisplayTimer extends AppCompatActivity {
 
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        //TODO outState.putLong("timeLeft", INSERT NAME OF TIME VARIABLE);
+        //TODO replace with variable name
+        long sendTimeVariable = 0;
+        outState.putLong("timeLeft", sendTimeVariable);
 
     }
 
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        //TODO INSERT NAME OF TIME VARIABLE = savedInstanceState.getLong("timeLeft");
+        //TODO replace with variable name
+        long timeVariable;
+        timeVariable = savedInstanceState.getLong("timeLeft");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }
