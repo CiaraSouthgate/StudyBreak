@@ -2,32 +2,21 @@
 
 An android app facilitates forming a healthy studying lifestyle.
 
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-An android smartphone or a virtual android platform.
+An android cellphone v7.0+ or a virtual android platform targeting API 24 and later.
 
-```
-Give examples
-```
 
 ### Installing
 
-Android 7.0+ OS
+* [Android Studio](https://developer.android.com/studio/)
+Android Platform v7.0 OS or later: Android cellphone with v7.0+ or android emulator from SDK manager in Android Studio.
+* [StudyBreak](https://github.com/CiaraSouthgate/StudyBreak)
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
@@ -43,7 +32,9 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+Android emulator: 
+
+Android cellphone(v7.0+):
 
 ## Built With
 
@@ -56,7 +47,7 @@ Add additional notes about how to deploy this on a live system
 * **Ciara Southgate** - [CiaraSouthgate](https://github.com/CiaraSouthgate)
 * **Sherman L** - [Sherman-l](https://github.com/sherman-l)
 * **Derrick Lee** - [yummyblabla](https://github.com/yummyblabla)
-* **Zafir Damani** - [zafird](https://github.com/zafird)
+* **Zafird Damani** - [zafird](https://github.com/zafird)
 * **Bryan Zhang** - [bryan7zhang](https://github.com/bryan7zhang)
 
 
