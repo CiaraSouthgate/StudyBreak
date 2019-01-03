@@ -76,24 +76,24 @@ public class DisplayTimer extends AppCompatActivity {
                             waterTime.setText(timeString);
                             break;
                         case ("stretch"):
-                            System.out.println("water remainder: " + remainingTime);
+                            System.out.println("stretch remainder: " + remainingTime);
                             stretchTime.setText(timeString);
                             break;
                         case("food"):
-                            System.out.println("water remainder: " + remainingTime);
+                            System.out.println("food remainder: " + remainingTime);
                             foodTime.setText(timeString);
                             break;
                         case("other"):
-                            System.out.println("water remainder: " + remainingTime);
+                            System.out.println("other remainder: " + remainingTime);
                             otherTime.setText(timeString);
                             break;
                         default:
                             break;
                     }
-                    if (remainingTime <= 30000) {
+                    if (remainingTime - MILLI_IN_MINUTE <= 10000) {
                         System.out.println("timer up!");
-                        startInterruption(task);
-                        countdownStudy(millisUntilFinished, tasks);
+                        startInterruption(task, millisUntilFinished);
+//                        countdownStudy(millisUntilFinished, tasks);
                         cancel();
                     }
                 }
@@ -105,7 +105,8 @@ public class DisplayTimer extends AppCompatActivity {
         }.start();
     }
 
-    private void startInterruption(Interruption task) {
+    private void startInterruption(Interruption task, long leftOnTimer) {
+        System.out.println("started other method");
         Intent intent = new Intent(DisplayTimer.this, DisplayInterruption.class);
         intent.putExtra("task", task);
         startActivity(intent);
