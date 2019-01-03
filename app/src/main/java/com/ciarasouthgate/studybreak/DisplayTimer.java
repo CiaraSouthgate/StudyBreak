@@ -21,6 +21,7 @@ public class DisplayTimer extends AppCompatActivity {
     private static final int MILLI_IN_MINUTE = 60000;
     private static final int MILLI_IN_SECOND = 1000;
     private static final int SIX_HOURS = 6 * 60 * 60000;
+    private long startTime;
 
     TextView waterTime;
     TextView stretchTime;
@@ -45,17 +46,16 @@ public class DisplayTimer extends AppCompatActivity {
 //        otherTime.setText("test");
 
         session = getIntent().getParcelableExtra("session");
+        startTime = getIntent().getLongExtra("startTime", SIX_HOURS);
         notificationManager = NotificationManagerCompat.from(this);
 
         countdownStudy(SIX_HOURS, session.getInterruptions());
 
         /* These next few lines are for the Service, if we get it running. */
         Intent serviceIntent = new Intent(this, TimerService.class);
-        //TODO replace with timer variable
-        int timer = 0;
-        serviceIntent.putExtra("session", this.session);
+        serviceIntent.putExtra("session", session);
 
-        startService(serviceIntent);
+        this.startService(serviceIntent);
         /* End of Service code */
     }
 

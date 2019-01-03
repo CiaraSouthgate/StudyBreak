@@ -18,8 +18,8 @@ public class TimerService extends Service {
 
     @Override
     public void onCreate() {
-
         super.onCreate();
+
         countdowntimer = new CountDownTimer(SIX_HOURS, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -41,7 +41,7 @@ public class TimerService extends Service {
 
         if (!(extras == null)) {
 
-            this.session = extras.get("session");
+            session = intent.getParcelableExtra("session");
 
         }
         return super.onStartCommand(intent, flags, startId);

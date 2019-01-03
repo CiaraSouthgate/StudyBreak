@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, DisplayTimer.class);
                 intent.putExtra("session", session);
+                intent.putExtra("startTime", 21600000L);
                 startActivity(intent);
             }
         });
