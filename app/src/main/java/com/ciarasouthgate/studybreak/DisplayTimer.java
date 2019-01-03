@@ -27,8 +27,6 @@ public class DisplayTimer extends AppCompatActivity {
     private static final int SIX_HOURS = 6 * 60 * 60000;
     private long startTime;
 
-
-
     TextView waterTime;
     TextView stretchTime;
     TextView foodTime;
@@ -67,7 +65,6 @@ public class DisplayTimer extends AppCompatActivity {
         startService(serviceIntent);
         /* End of Service code */
     }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -123,7 +120,6 @@ public class DisplayTimer extends AppCompatActivity {
             }
         }
     }
-
     public void countdownStudy(long runningTime, final Interruption[] tasks) {
         new CountDownTimer(runningTime, MILLI_IN_MINUTE) {
             public void onTick(long millisUntilFinished) {
