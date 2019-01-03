@@ -5,11 +5,15 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class StudySession implements Parcelable{
-    public int numInterruptions;
+//    public int numInterruptions;
     public Interruption[] interruptions;
 
-    public StudySession(int numInterruptions, Interruption[] inter) {
+    public StudySession(int numInterruptions) {
         this.interruptions = new Interruption[numInterruptions];
+    }
+
+    public StudySession(Interruption[] i) {
+        interruptions = i;
     }
 
     public Interruption[] getInterruptions() {
@@ -18,12 +22,12 @@ public class StudySession implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(numInterruptions);
+//        dest.writeInt(numInterruptions);
         dest.writeTypedArray(interruptions, flags);
     }
 
     private StudySession(Parcel in) {
-        numInterruptions = in.readInt();
+//        numInterruptions = in.readInt();
         interruptions = in.createTypedArray(Interruption.CREATOR);
     }
 
