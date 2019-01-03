@@ -3,22 +3,11 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Interruption implements Parcelable {
-
-    /**How long the program has been running for while not paused. */
-    private static long runningTime = 0;
-    /**The start time.*/
-    private static long startTime = 0;
-    /**The system time at which the program is paused.*/
-    private static long pausedTime = 0;
-    /**The length of time at which the program is paused.*/
-    private static long stoppedTime = 0;
-    /**An array holding the intevals of the breaks.*/
-    private static int [] taskLengthTime = {2000, 5000}; //time is in milliseconds
-    /** The name of interruption*/
+    /** The name of interruption. */
     private static String name;
-    /** The interval of interruption*/
+    /** The interval between interruptions. */
     private static long interval;
-    /** The duration of interruption*/
+    /** The duration of interruption. */
     private static long duration;
 
     public Interruption(String name, long interval, long duration) {
@@ -26,36 +15,30 @@ public class Interruption implements Parcelable {
         this.interval = interval;
         this.duration = duration;
     }
-    public static void interruptionDuration() {
-        //ToDo -needs to be modified based on timer and methods called
-        startTime = System.currentTimeMillis();
-        for (int i = 0; i < taskLengthTime.length; i++) {
-            while (runningTime < taskLengthTime[i]) {
-                runningTime = System.currentTimeMillis() - startTime - stoppedTime;
-            }
-//            System.out.println("Break time @ " + taskLengthTime[i] + " milliseconds.");
-            pausedTime = System.currentTimeMillis();
-            //Time is currently paused
-            //On button click, resume the program here.
-            stoppedTime = System.currentTimeMillis() - pausedTime;
-        }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static long getDuration() {
+        return duration;
+    }
+
+    public static long getInterval() {
+        return interval;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeLong(runningTime);
-        dest.writeLong(startTime);
-        dest.writeLong(pausedTime);
-        dest.writeLong(stoppedTime);
-        dest.writeIntArray(taskLengthTime);
+        dest.writeString(name);
+        dest.writeLong(interval);
+        dest.writeLong(duration);
     }
 
     private Interruption(Parcel in) {
-        runningTime = in.readLong();
-        startTime = in.readLong();
-        pausedTime = in.readLong();
-        stoppedTime = in.readLong();
-        taskLengthTime = in.createIntArray();
+        name = in.readString();
+        interval = in.readLong();
+        duration = in.readLong();
     }
 
     @Override

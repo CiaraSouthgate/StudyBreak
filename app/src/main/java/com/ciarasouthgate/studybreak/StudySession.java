@@ -1,31 +1,48 @@
 package com.ciarasouthgate.studybreak;
 
 
-public class StudySession {
+import android.os.Parcel;
+import android.os.Parcelable;
 
-    private static int numInterruptions;
-    private static Interruption[] inter;
-    public StudySession(int numInterruptions, Interruption[] inter){
-        this.numInterruptions = numInterruptions;
-        this.inter = inter;
-        }
+public class StudySession implements Parcelable{
+    public int numInterruptions;
+    public Interruption[] interruptions;
 
-    public void setUp(){
-
-        numInterruptions = 2; //ToDo - get data from layout
-        String[] taskName = new String[numInterruptions];
-        long[] taskInterval = new long[numInterruptions];
-        long[] taskDuration = new long[numInterruptions];
-        Interruption[] inter = new Interruption[numInterruptions];
-
-        for (int i = 0; i < numInterruptions; i++){
-            Interruption temp = new Interruption(taskName[i], taskInterval[i],
-                    taskDuration[i]);
-            inter[i] = temp;
-        }
-
-
-        StudySession studyObject= new StudySession(numInterruptions, inter);
-        //ToDo - need timer countdown or countup (use mod boolean to call methods)
+    public StudySession(int numInterruptions, Interruption[] inter) {
+        this.interruptions = new Interruption[numInterruptions];
     }
+
+    public Interruption[] getInterruptions() {
+        return interruptions;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(numInterruptions);
+        dest.writeTypedArray(interruptions, flags);
+    }
+
+    private StudySession(Parcel in) {
+        numInterruptions = in.readInt();
+        interruptions = in.createTypedArray(Interruption.CREATOR);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Parcelable.Creator<StudySession> CREATOR
+            = new Parcelable.Creator<StudySession>() {
+
+        @Override
+        public StudySession createFromParcel(Parcel in) {
+            return new StudySession(in);
+        }
+
+        @Override
+        public StudySession[] newArray(int size) {
+            return new StudySession[size];
+        }
+    };
 }

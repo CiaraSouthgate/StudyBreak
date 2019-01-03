@@ -23,7 +23,7 @@ public class App extends Application {
                     "Alert",
                     NotificationManager.IMPORTANCE_HIGH
             );
-            alertChannel.setDescription("Alerts for task change.");
+            alertChannel.setDescription("Alerts for task change");
 
             NotificationManager manager = getSystemService(NotificationManager.class);
             manager.createNotificationChannel(alertChannel);
