@@ -16,7 +16,7 @@ public class StudySession {
         String[] taskName = new String[numInterruptions];
         long[] taskInterval = new long[numInterruptions];
         long[] taskDuration = new long[numInterruptions];
-        Interruption[] inter= new Interruption[numInterruptions];
+        Interruption[] inter = new Interruption[numInterruptions];
 
         for (int i = 0; i < numInterruptions; i++){
             Interruption temp = new Interruption(taskName[i], taskInterval[i],
@@ -24,7 +24,8 @@ public class StudySession {
             inter[i] = temp;
         }
 
-        StudySession studyObject= new StudySession(numInterruptions, inter);
 
+        StudySession studyObject= new StudySession(numInterruptions, inter);
+        //ToDo - need timer countdown or countup (use mod boolean to call methods)
     }
 }

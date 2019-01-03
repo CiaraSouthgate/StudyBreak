@@ -26,13 +26,14 @@ public class Interruption implements Parcelable {
         this.interval = interval;
         this.duration = duration;
     }
-    public static void main(String[] args) {
+    public static void interruptionDuration() {
+        //ToDo -needs to be modified based on timer and methods called
         startTime = System.currentTimeMillis();
         for (int i = 0; i < taskLengthTime.length; i++) {
             while (runningTime < taskLengthTime[i]) {
                 runningTime = System.currentTimeMillis() - startTime - stoppedTime;
             }
-            System.out.println("Break time @ " + taskLengthTime[i] + " milliseconds.");
+//            System.out.println("Break time @ " + taskLengthTime[i] + " milliseconds.");
             pausedTime = System.currentTimeMillis();
             //Time is currently paused
             //On button click, resume the program here.

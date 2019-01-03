@@ -9,7 +9,7 @@ public class Timer implements Parcelable {
     private static int minuteCount = 0;
     private static final int MILLI_TO_MINUTES = 60000;
 
-    public static void main(String[] args) {
+    public static void countdown() {
         startTime = System.currentTimeMillis();
         while (true) {
             runningTime = System.currentTimeMillis() - startTime;
@@ -18,7 +18,8 @@ public class Timer implements Parcelable {
                 System.out.println("Number of minutes elapsed: " + minuteCount);
             }
         }
-    }
+    } //ToDo -countdown or countup
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
