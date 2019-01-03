@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">StudyBreak</string>
     <string name="title_activity_display_timer">DisplayTimer</string>
+    <string name="water_break">Water Break</string>
+    <string name="stretch_break">Stretch Break</string>
+    <string name="food_break">Food Break</string>
+    <string name="other_break">Other Break</string>
+    <string name="minutes">min</string>
 </resources>
