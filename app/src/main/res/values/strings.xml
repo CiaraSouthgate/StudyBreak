@@ -6,4 +6,7 @@
     <string name="food_break">Food Break</string>
     <string name="other_break">Other Break</string>
     <string name="minutes">min</string>
+    <string name="no_breaks">You do not have any breaks! Please select a break by pressing the + button above.</string>
+    <string name="add_button">+</string>
+    <string name="start_button">Start the Timer!</string>
 </resources>

@@ -15,13 +15,13 @@ public class TimerService extends Service {
         super.onCreate();
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
-                //TODO replace with string
-                .setContentTitle("GET TASK NAME")
-                .setContentText("GET TIMER")
-    }
+//    @Override
+//    public int onStartCommand(Intent intent, int flags, int startId) {
+//        Notification notification = new NotificationCompat.Builder(this, CHANNEL_2_ID)
+//                //TODO replace with string
+//                .setContentTitle("GET TASK NAME")
+//                .setContentText("GET TIMER");
+//    }
 
     @Override
     public void onDestroy() {
