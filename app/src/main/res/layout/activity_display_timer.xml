@@ -7,21 +7,6 @@
     tools:context=".DisplayTimer">
 
     <TextView
-        android:id="@+id/foodTime2"
-        android:layout_width="76dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="00 "
-        android:textAlignment="textEnd"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toStartOf="@+id/otherTime"
-        app:layout_constraintTop_toBottomOf="@+id/otherBar" />
-
-    <TextView
         android:id="@+id/foodTime"
         android:layout_width="76dp"
         android:layout_height="27dp"
@@ -35,30 +20,6 @@
         android:typeface="normal"
         app:layout_constraintEnd_toStartOf="@+id/foodMin"
         app:layout_constraintTop_toBottomOf="@+id/foodBar" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="117dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#c10726"
-        android:text="END"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button6" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_width="117dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="#d3940c"
-        android:text="Pause"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button4" />
 
     <TextView
         android:id="@+id/title3"
@@ -103,6 +64,16 @@
         android:progressDrawable="@drawable/circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stretchText" />
+
+    <ImageView
+        android:id="@+id/stretchIcon"
+        android:layout_width="94dp"
+        android:layout_height="115dp"
+        app:layout_constraintBottom_toBottomOf="@id/stretchBar"
+        app:layout_constraintLeft_toLeftOf="@id/stretchBar"
+        app:layout_constraintRight_toRightOf="@id/stretchBar"
+        app:layout_constraintTop_toTopOf="@id/stretchBar"
+        app:srcCompat="@drawable/stretchicon" />
 
     <TextView
         android:id="@+id/stretchTime"
@@ -163,8 +134,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/otherText" />
 
+    <ImageView
+        android:id="@+id/otherIcon"
+        android:layout_width="97dp"
+        android:layout_height="325dp"
+        app:layout_constraintBottom_toBottomOf="@id/otherBar"
+        app:layout_constraintLeft_toLeftOf="@id/otherBar"
+        app:layout_constraintRight_toRightOf="@id/otherBar"
+        app:layout_constraintTop_toTopOf="@id/otherBar"
+        app:srcCompat="@drawable/pauseicon" />
+
     <TextView
         android:id="@+id/otherTime"
+        android:layout_width="76dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_thin"
+        android:text="00 "
+        android:textAlignment="textEnd"
+        android:textColor="#000"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toStartOf="@+id/otherMin"
+        app:layout_constraintTop_toBottomOf="@+id/otherBar" />
+
+    <TextView
+        android:id="@+id/otherMin"
         android:layout_width="76dp"
         android:layout_height="27dp"
         android:layout_marginTop="8dp"
@@ -206,6 +202,16 @@
         android:progressDrawable="@drawable/circle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodText" />
+
+    <ImageView
+        android:id="@+id/foodIcon"
+        android:layout_width="75dp"
+        android:layout_height="321dp"
+        app:layout_constraintBottom_toBottomOf="@id/foodBar"
+        app:layout_constraintLeft_toLeftOf="@id/foodBar"
+        app:layout_constraintRight_toRightOf="@id/foodBar"
+        app:layout_constraintTop_toTopOf="@id/foodBar"
+        app:srcCompat="@drawable/foodicon2" />
 
     <TextView
         android:id="@+id/foodMin"
@@ -251,6 +257,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/waterText" />
 
+    <ImageView
+        android:id="@+id/waterIcon"
+        android:layout_width="68dp"
+        android:layout_height="221dp"
+        app:layout_constraintBottom_toBottomOf="@id/waterBar"
+        app:layout_constraintLeft_toLeftOf="@id/waterBar"
+        app:layout_constraintRight_toRightOf="@id/waterBar"
+        app:layout_constraintTop_toTopOf="@id/waterBar"
+        app:srcCompat="@drawable/watericon" />
+
     <TextView
         android:id="@+id/waterTime"
         android:layout_width="76dp"
@@ -283,7 +299,7 @@
         app:layout_constraintTop_toBottomOf="@+id/waterBar" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/addButton"
         android:layout_width="117dp"
         android:layout_height="51dp"
         android:layout_marginStart="8dp"
@@ -293,52 +309,28 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="68dp"
-        android:layout_height="221dp"
-        app:srcCompat="@drawable/watericon"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="71dp"
-        app:layout_constraintBottom_toBottomOf="@id/waterBar"
-        app:layout_constraintLeft_toLeftOf="@id/waterBar"
-        app:layout_constraintRight_toRightOf="@id/waterBar"
-        app:layout_constraintTop_toTopOf="@id/waterBar"/>
+    <Button
+        android:id="@+id/pauseButton"
+        android:layout_width="117dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#d3940c"
+        android:text="Pause"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/addButton" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="75dp"
-        android:layout_height="321dp"
-        app:srcCompat="@drawable/foodicon2"
-        tools:layout_editor_absoluteX="244dp"
-        tools:layout_editor_absoluteY="23dp"
-        app:layout_constraintBottom_toBottomOf="@id/foodBar"
-        app:layout_constraintLeft_toLeftOf="@id/foodBar"
-        app:layout_constraintRight_toRightOf="@id/foodBar"
-        app:layout_constraintTop_toTopOf="@id/foodBar"/>
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="94dp"
-        android:layout_height="115dp"
-        app:srcCompat="@drawable/stretchicon"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="342dp"
-        app:layout_constraintBottom_toBottomOf="@id/stretchBar"
-        app:layout_constraintLeft_toLeftOf="@id/stretchBar"
-        app:layout_constraintRight_toRightOf="@id/stretchBar"
-        app:layout_constraintTop_toTopOf="@id/stretchBar"/>
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="97dp"
-        android:layout_height="325dp"
-        app:srcCompat="@drawable/pauseicon"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="241dp"
-        app:layout_constraintBottom_toBottomOf="@id/otherBar"
-        app:layout_constraintLeft_toLeftOf="@id/otherBar"
-        app:layout_constraintRight_toRightOf="@id/otherBar"
-        app:layout_constraintTop_toTopOf="@id/otherBar"/>
+    <Button
+        android:id="@+id/endButton"
+        android:layout_width="117dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#c10726"
+        android:text="END"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton" />
 
 </android.support.constraint.ConstraintLayout>
