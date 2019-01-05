@@ -28,20 +28,30 @@ public class MainActivity extends AppCompatActivity {
 
                 int breakNo = 4;
 
-                EditText waterTime = findViewById(R.id.water_time);
-                EditText stretchTime = findViewById(R.id.stretch_time);
-                EditText foodTime = findViewById(R.id.food_time);
-                EditText otherTime = findViewById(R.id.other_time);
+                EditText waterInterval = findViewById(R.id.water_interval);
+                EditText stretchInterval = findViewById(R.id.stretch_interval);
+                EditText foodInterval = findViewById(R.id.food_interval);
+                EditText otherInterval = findViewById(R.id.other_interval);
 
-                long waterLong = Long.parseLong(waterTime.getText().toString()) * MILLI_IN_MINUTE;
-                long stretchLong = Long.parseLong(stretchTime.getText().toString()) * MILLI_IN_MINUTE;
-                long foodLong = Long.parseLong(foodTime.getText().toString()) * MILLI_IN_MINUTE;
-                long otherLong = Long.parseLong(otherTime.getText().toString()) * MILLI_IN_MINUTE;
+                EditText waterDuration = findViewById(R.id.water_duration);
+                EditText stretchDuration = findViewById(R.id.stretch_duration);
+                EditText foodDuration = findViewById(R.id.food_duration);
+                EditText otherDuration = findViewById(R.id.other_duration);
 
-                Interruption water = new Interruption("Water", waterLong, 1 * MILLI_IN_MINUTE);
-                Interruption stretch = new Interruption("Stretch", stretchLong, 10 * MILLI_IN_MINUTE);
-                Interruption food = new Interruption("Food", foodLong, 20 * MILLI_IN_MINUTE);
-                Interruption other = new Interruption("Other", otherLong, 30 * MILLI_IN_MINUTE);
+                long waterILong = Long.parseLong(waterInterval.getText().toString()) * MILLI_IN_MINUTE;
+                long stretchILong = Long.parseLong(stretchInterval.getText().toString()) * MILLI_IN_MINUTE;
+                long foodILong = Long.parseLong(foodInterval.getText().toString()) * MILLI_IN_MINUTE;
+                long otherILong = Long.parseLong(otherInterval.getText().toString()) * MILLI_IN_MINUTE;
+
+                long waterDLong = Long.parseLong(waterDuration.getText().toString()) * MILLI_IN_MINUTE;
+                long stretchDLong = Long.parseLong(stretchDuration.getText().toString()) * MILLI_IN_MINUTE;
+                long foodDLong = Long.parseLong(foodDuration.getText().toString()) * MILLI_IN_MINUTE;
+                long otherDLong = Long.parseLong(otherDuration.getText().toString()) * MILLI_IN_MINUTE;
+
+                Interruption water = new Interruption("Water", waterILong, waterDLong);
+                Interruption stretch = new Interruption("Stretch", stretchILong, stretchDLong);
+                Interruption food = new Interruption("Food", foodILong, foodDLong);
+                Interruption other = new Interruption("Other", otherILong, otherDLong);
 
                 Interruption[] i = new Interruption[]{water, stretch, food, other};
 
