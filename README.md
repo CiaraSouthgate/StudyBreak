@@ -47,7 +47,7 @@ Android cellphone(v7.0+):
 * **Ciara Southgate** - [CiaraSouthgate](https://github.com/CiaraSouthgate)
 * **Sherman L** - [Sherman-l](https://github.com/sherman-l)
 * **Derrick Lee** - [yummyblabla](https://github.com/yummyblabla)
-* **Zafird Damani** - [zafird](https://github.com/zafird)
+* **Zafir Damani** - [zafird](https://github.com/zafird)
 * **Bryan Zhang** - [bryan7zhang](https://github.com/bryan7zhang)
 
 
