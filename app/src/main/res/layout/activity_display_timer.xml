@@ -6,8 +6,335 @@
     android:layout_height="match_parent"
     tools:context=".DisplayTimer">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/pauseButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_bar">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/water_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/stretch_frame"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".5">
+
+            <TextView
+                android:id="@+id/water_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/water_break"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/water_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:progress="100"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/water_text" />
+
+            <ImageView
+                android:id="@+id/water_icon"
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                app:layout_constraintBottom_toBottomOf="@+id/water_bar"
+                app:layout_constraintEnd_toEndOf="@+id/water_bar"
+                app:layout_constraintStart_toStartOf="@+id/water_bar"
+                app:layout_constraintTop_toTopOf="@+id/water_bar"
+                app:srcCompat="@drawable/watericon" />
+
+            <TextView
+                android:id="@+id/water_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="00 "
+                android:textAlignment="textEnd"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toStartOf="@+id/water_min"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/water_bar" />
+
+            <TextView
+                android:id="@+id/water_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/minutes"
+                android:textAlignment="viewStart"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/water_time"
+                app:layout_constraintTop_toBottomOf="@+id/water_bar" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/stretch_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintStart_toEndOf="@+id/water_frame"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent=".5">
+
+            <TextView
+                android:id="@+id/stretch_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/stretch_break"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/stretch_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:progress="100"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stretch_text" />
+
+            <ImageView
+                android:id="@+id/stretch_icon"
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                app:layout_constraintBottom_toBottomOf="@+id/stretch_bar"
+                app:layout_constraintEnd_toEndOf="@+id/stretch_bar"
+                app:layout_constraintStart_toStartOf="@+id/stretch_bar"
+                app:layout_constraintTop_toTopOf="@+id/stretch_bar"
+                app:srcCompat="@drawable/stretchicon" />
+
+            <TextView
+                android:id="@+id/stretch_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="00 "
+                android:textAlignment="textEnd"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toStartOf="@+id/stretch_min"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/stretch_bar" />
+
+            <TextView
+                android:id="@+id/stretch_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/minutes"
+                android:textAlignment="viewStart"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/stretch_time"
+                app:layout_constraintTop_toBottomOf="@+id/stretch_bar" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/food_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/other_frame"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/water_frame"
+            app:layout_constraintWidth_percent=".5">
+
+            <TextView
+                android:id="@+id/food_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/food_break"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/food_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:progress="100"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/food_text" />
+
+            <ImageView
+                android:id="@+id/food_icon"
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                app:layout_constraintBottom_toBottomOf="@+id/food_bar"
+                app:layout_constraintEnd_toEndOf="@+id/food_bar"
+                app:layout_constraintStart_toStartOf="@+id/food_bar"
+                app:layout_constraintTop_toTopOf="@+id/food_bar"
+                app:srcCompat="@drawable/foodicon2" />
+
+            <TextView
+                android:id="@+id/food_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="00 "
+                android:textAlignment="textEnd"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toStartOf="@+id/food_min"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/food_bar" />
+
+            <TextView
+                android:id="@+id/food_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/minutes"
+                android:textAlignment="viewStart"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/food_time"
+                app:layout_constraintTop_toBottomOf="@+id/food_bar" />
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/other_frame"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent=".5"
+            app:layout_constraintStart_toEndOf="@+id/food_frame"
+            app:layout_constraintTop_toBottomOf="@id/stretch_frame"
+            app:layout_constraintWidth_percent=".5">
+
+            <TextView
+                android:id="@+id/other_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/lato"
+                android:text="@string/other_break"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/other_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="150sp"
+                android:layout_height="150sp"
+                android:progress="100"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/other_text" />
+
+            <ImageView
+                android:id="@+id/other_icon"
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                app:layout_constraintBottom_toBottomOf="@+id/other_bar"
+                app:layout_constraintEnd_toEndOf="@+id/other_bar"
+                app:layout_constraintStart_toStartOf="@+id/other_bar"
+                app:layout_constraintTop_toTopOf="@+id/other_bar"
+                app:srcCompat="@drawable/pauseicon"/>
+
+            <TextView
+                android:id="@+id/other_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="00 "
+                android:textAlignment="textEnd"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toStartOf="@+id/other_min"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/other_bar" />
+
+            <TextView
+                android:id="@+id/other_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:text="@string/minutes"
+                android:textAlignment="viewStart"
+                android:textColor="#000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="normal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/other_time"
+                app:layout_constraintTop_toBottomOf="@+id/other_bar" />
+        </android.support.constraint.ConstraintLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
     <TextView
-        android:id="@+id/title3"
+        android:id="@+id/title_bar"
         android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/colorPrimary"
@@ -22,287 +349,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/waterText"
-        android:layout_width="146dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/water_break"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title3" />
-
-    <ProgressBar
-        android:id="@+id/waterBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="146dp"
-        android:layout_height="134dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:progress="100"
-        android:progressDrawable="@drawable/circle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterText" />
-
-    <TextView
-        android:id="@+id/waterMin"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/minutes"
-        android:textAlignment="viewStart"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toEndOf="@+id/waterTime"
-        app:layout_constraintTop_toBottomOf="@+id/waterBar" />
-
-    <ImageView
-        android:id="@+id/waterIcon"
-        android:layout_width="68dp"
-        android:layout_height="221dp"
-        app:layout_constraintBottom_toBottomOf="@+id/waterBar"
-        app:layout_constraintLeft_toLeftOf="@+id/waterBar"
-        app:layout_constraintRight_toRightOf="@+id/waterBar"
-        app:layout_constraintTop_toTopOf="@+id/waterBar"
-        app:srcCompat="@drawable/watericon" />
-
-    <TextView
-        android:id="@+id/waterTime"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="00 "
-        android:textAlignment="textEnd"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterBar" />
-
-    <TextView
-        android:id="@+id/foodText"
-        android:layout_width="146dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/food_break"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title3" />
-
-    <ImageView
-        android:id="@+id/foodIcon"
-        android:layout_width="75dp"
-        android:layout_height="321dp"
-        app:layout_constraintBottom_toBottomOf="@+id/foodBar"
-        app:layout_constraintLeft_toLeftOf="@+id/foodBar"
-        app:layout_constraintRight_toRightOf="@+id/foodBar"
-        app:layout_constraintTop_toTopOf="@+id/foodBar"
-        app:srcCompat="@drawable/foodicon2" />
-
-    <ProgressBar
-        android:id="@+id/foodBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="146dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="28dp"
-        android:progress="100"
-        android:progressDrawable="@drawable/circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodText" />
-
-    <TextView
-        android:id="@+id/foodTime"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="00 "
-        android:textAlignment="textEnd"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toStartOf="@+id/foodMin"
-        app:layout_constraintTop_toBottomOf="@+id/foodBar" />
-
-    <TextView
-        android:id="@+id/foodMin"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/minutes"
-        android:textAlignment="viewStart"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodBar" />
-
-    <TextView
-        android:id="@+id/stretchText"
-        android:layout_width="146dp"
-        android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/stretch_break"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterTime" />
-
-    <ProgressBar
-        android:id="@+id/stretchBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="146dp"
-        android:layout_height="134dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:progress="100"
-        android:progressDrawable="@drawable/circle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stretchText" />
-
-    <ImageView
-        android:id="@+id/stretchIcon"
-        android:layout_width="94dp"
-        android:layout_height="115dp"
-        app:layout_constraintBottom_toBottomOf="@+id/stretchBar"
-        app:layout_constraintLeft_toLeftOf="@+id/stretchBar"
-        app:layout_constraintRight_toRightOf="@+id/stretchBar"
-        app:layout_constraintTop_toTopOf="@+id/stretchBar"
-        app:srcCompat="@drawable/stretchicon" />
-
-    <TextView
-        android:id="@+id/stretchTime"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="00 "
-        android:textAlignment="textEnd"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stretchBar" />
-
-    <TextView
-        android:id="@+id/stretchMin"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/minutes"
-        android:textAlignment="viewStart"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintStart_toEndOf="@+id/stretchTime"
-        app:layout_constraintTop_toBottomOf="@+id/stretchBar" />
-
-    <TextView
-        android:id="@+id/otherText"
-        android:layout_width="146dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/other_break"
-        android:textAlignment="center"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/foodMin" />
-
-    <ProgressBar
-        android:id="@+id/otherBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="146dp"
-        android:layout_height="134dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="28dp"
-        android:progress="100"
-        android:progressDrawable="@drawable/circle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otherText" />
-
-    <ImageView
-        android:id="@+id/otherIcon"
-        android:layout_width="97dp"
-        android:layout_height="325dp"
-        app:layout_constraintBottom_toBottomOf="@+id/otherBar"
-        app:layout_constraintLeft_toLeftOf="@+id/otherBar"
-        app:layout_constraintRight_toRightOf="@+id/otherBar"
-        app:layout_constraintTop_toTopOf="@+id/otherBar"
-        app:srcCompat="@drawable/pauseicon" />
-
-    <TextView
-        android:id="@+id/otherTime"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="00 "
-        android:textAlignment="textEnd"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toStartOf="@+id/otherMin"
-        app:layout_constraintTop_toBottomOf="@+id/otherBar" />
-
-    <TextView
-        android:id="@+id/otherMin"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="28dp"
-        android:fontFamily="@font/roboto_thin"
-        android:text="@string/minutes"
-        android:textAlignment="viewStart"
-        android:textColor="#000"
-        android:textSize="23sp"
-        android:textStyle="bold"
-        android:typeface="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/otherBar" />
-
     <Button
         android:id="@+id/pauseButton"
         android:layout_width="117dp"
         android:layout_height="51dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="#d3940c"
         android:fontFamily="@font/lato"
@@ -311,14 +361,13 @@
         android:textColor="#FFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/otherTime"
+        app:layout_constraintEnd_toStartOf="@+id/endButton"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/endButton"
         android:layout_width="117dp"
         android:layout_height="51dp"
-        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:background="#c10726"
         android:fontFamily="@font/lato"
@@ -326,8 +375,8 @@
         android:text="END"
         android:textColor="#FFF"
         android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/pauseButton"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stretchMin" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

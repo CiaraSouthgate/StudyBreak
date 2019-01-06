@@ -5,18 +5,13 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.SharedPreferences;
-import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import static com.ciarasouthgate.studybreak.App.CHANNEL_1_ID;
 
@@ -52,10 +47,10 @@ public class DisplayTimer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_timer);
 
-        waterTime = findViewById(R.id.waterTime);
-        stretchTime = findViewById(R.id.stretchTime);
-        foodTime = findViewById(R.id.foodTime);
-        otherTime = findViewById(R.id.otherTime);
+        waterTime = findViewById(R.id.water_time);
+        stretchTime = findViewById(R.id.stretch_time);
+        foodTime = findViewById(R.id.food_time);
+        otherTime = findViewById(R.id.other_time);
 
         session = getIntent().getParcelableExtra("session");
         startTime = getIntent().getLongExtra("startTime", SIX_HOURS);

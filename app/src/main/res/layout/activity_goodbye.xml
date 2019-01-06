@@ -7,7 +7,7 @@
     tools:context=".Goodbye">
 
     <TextView
-        android:id="@+id/title3"
+        android:id="@+id/title_bar"
         android:layout_width="0dp"
         android:layout_height="71dp"
         android:background="@color/colorPrimary"
